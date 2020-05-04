@@ -3,7 +3,7 @@
 	-- Copyright (c) 2012-2014 Kenny Shields --
 --]]------------------------------------------------
 
-local path = "lib."..(...)
+local path = (...)
 
 -- print("path",path)
 
@@ -17,14 +17,14 @@ loveframes.require = function(name)
 end
 
 -- loveframes specific modules
-loveframes.require(path .. ".libraries.utils")
-loveframes.require(path .. ".libraries.templates")
-loveframes.require(path .. ".libraries.objects")
-loveframes.require(path .. ".libraries.skins")
+loveframes.require("loveframes.libraries.utils")
+loveframes.require("loveframes.libraries.templates")
+loveframes.require("loveframes.libraries.objects")
+loveframes.require("loveframes.libraries.skins")
 
 -- generic libraries
-loveframes.class = require(path .. ".third-party.middleclass")
-loveframes.utf8 = require(path .. ".third-party.utf8")
+loveframes.class = require("middleclass")
+loveframes.utf8 = require("loveframes.third-party.utf8")
 
 
 -- library info
