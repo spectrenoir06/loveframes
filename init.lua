@@ -3,7 +3,9 @@
 	-- Copyright (c) 2012-2014 Kenny Shields --
 --]]------------------------------------------------
 
-local path = ...
+local path = "lib."..(...)
+
+-- print("path",path)
 
 local loveframes = {}
 
@@ -75,12 +77,12 @@ function loveframes.update(dt)
 
 	local base = loveframes.base
 	local input_cursor_set = loveframes.input_cursor_set
-	
+
 	loveframes.collisioncount = 0
 	loveframes.objectcount = 0
 	loveframes.hover = false
 	loveframes.hoverobject = false
-	
+
 	local downobject = loveframes.downobject
 	if #loveframes.collisions > 0 then
 		local top = loveframes.collisions[#loveframes.collisions]
@@ -92,8 +94,8 @@ function loveframes.update(dt)
 			end
 		end
 	end
-	
-	if loveframes.config["ENABLE_SYSTEM_CURSORS"] then 
+
+	if loveframes.config["ENABLE_SYSTEM_CURSORS"] then
 		local hoverobject = loveframes.hoverobject
 		local arrow = love.mouse.getSystemCursor("arrow")
 		local curcursor = love.mouse.getCursor()
@@ -174,7 +176,7 @@ function loveframes.update(dt)
 			end
 		end
 	end
-	
+
 	loveframes.collisions = {}
 	base:update(dt)
 
@@ -189,21 +191,21 @@ function loveframes.draw()
 	local base = loveframes.base
 	local r, g, b, a = love.graphics.getColor()
 	local font = love.graphics.getFont()
-	
+
 	base:draw()
-	
+
 	loveframes.drawcount = 0
-	
+
 	if loveframes.config["DEBUG"] then
 		loveframes.DebugDraw()
 	end
-	
+
 	love.graphics.setColor(r, g, b, a)
-	
+
 	if font then
 		love.graphics.setFont(font)
 	end
-	
+
 end
 
 --[[---------------------------------------------------------
@@ -214,7 +216,7 @@ function loveframes.mousepressed(x, y, button)
 
 	local base = loveframes.base
 	base:mousepressed(x, y, button)
-	
+
 	-- close open menus
 	local bchildren = base.children
 	local hoverobject = loveframes.hoverobject
@@ -232,7 +234,7 @@ function loveframes.mousepressed(x, y, button)
 			end
 		end
 	end
-	
+
 end
 
 --[[---------------------------------------------------------
@@ -243,13 +245,13 @@ function loveframes.mousereleased(x, y, button)
 
 	local base = loveframes.base
 	base:mousereleased(x, y, button)
-	
+
 	-- reset the hover object
 	if button == 1 then
 		loveframes.downobject = false
 		loveframes.selectedobject = false
 	end
-	
+
 end
 
 --[[---------------------------------------------------------
@@ -271,7 +273,7 @@ function loveframes.keypressed(key, isrepeat)
 
 	local base = loveframes.base
 	base:keypressed(key, isrepeat)
-	
+
 end
 
 --[[---------------------------------------------------------
@@ -282,7 +284,7 @@ function loveframes.keyreleased(key)
 
 	local base = loveframes.base
 	base:keyreleased(key)
-	
+
 end
 
 --[[---------------------------------------------------------
@@ -293,7 +295,7 @@ function loveframes.textinput(text)
 
 	local base = loveframes.base
 	base:textinput(text)
-	
+
 end
 
 
